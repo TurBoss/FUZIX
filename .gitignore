@@ -22,3 +22,9 @@ size.report
 .obj
 *.elf
 bin
+
+.pydevproject
+
+.project
+
+*.debug

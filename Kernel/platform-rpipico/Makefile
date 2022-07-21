@@ -20,6 +20,12 @@ image:: world uf2conv
 	arm-none-eabi-objcopy -I binary -O elf32-littlearm --change-section-vma .data=0x10018000 filesystem.ftl filesystem.elf
 	./uf2conv filesystem.ftl filesystem.uf2 0x10018000
 
+sd_image:: world
+	./update-flash_sd.sh
+#	../../Standalone/mkftl -s 1952 -e 0x1000 -g 10 filesystem.img -o filesystem.ftl
+#	arm-none-eabi-objcopy -I binary -O elf32-littlearm --change-section-vma .data=0x10018000 filesystem.ftl filesystem.elf
+#	./uf2conv filesystem.ftl filesystem.uf2 0x10018000
+
 clean:
 	rm -rf build
 	$(MAKE) -C ../../Library/libs -f Makefile.armm0 clean
