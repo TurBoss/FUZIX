@@ -1,3 +1,6 @@
+// https://rosettacode.org/wiki/Conway%27s_Game_of_Life#C
+// adapted by TurBoss 2022
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -9,17 +12,6 @@
 #define for_x for (int x = 0; x < w; x++)
 #define for_y for (int y = 0; y < h; y++)
 #define for_xy for_x for_y
-
-//void show(void *u, int w, int h)
-//{
-//	bool (*univ)[w] = u;
-//	printf("\033[H");
-//	for_y {
-//		for_x printf(univ[y][x] ? "\033[42m " : "\033[0m ");
-//		printf("\033[E");
-//	}
-//	fflush(stdout);
-//}
 
 
 void show(void *u, int w, int h)
@@ -67,9 +59,7 @@ void game(int w, int h)
 
 	while (1) {
 		show(univ, w, h);
-
 		evolve(univ, w, h);
-
 		usleep(250000);
 	}
 }
