@@ -25,6 +25,10 @@ $(COBJS): %.rel: %.c
 #	$(CROSS_CC) $(CROSS_CCOPTS) -c $<
 
 clean:
-	rm -f $(OBJS) $(JUNK)  core *~ 
+	rm -f $(OBJS) $(JUNK)  core *~
 
 image:
+	./update-rootfs.sh
+
+
+diskimage: image
