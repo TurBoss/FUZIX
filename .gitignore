@@ -23,3 +23,8 @@ size.report
 *.elf
 bin
 *.debug
+*.@
+*.^
+*.%
+*.#
+.project

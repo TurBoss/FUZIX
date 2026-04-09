@@ -74,15 +74,17 @@ getarg(void)
 
 
 PROC
-version()
+int version(void)
 /* version: print which version of levee we are... */
 {
-    errmsg("levee ");prints(ED_NOTICE);printch(ED_REVISION);
+    errmsg("levee ");
+    prints(ED_NOTICE);
+    printch(ED_REVISION);
 } /* version */
 
 
 PROC
-args(void)
+int args(void)
 /* args: print the argument list */
 {
     register int i;
@@ -109,7 +111,7 @@ args(void)
 	    prints(argv[i]);
     }
 } /* args */
-    
+
 PROC
 setcmd(void)
 {
@@ -118,7 +120,7 @@ setcmd(void)
     register char *arg;
     char *num;
     register struct variable *vp;
-    
+
     if (arg = getarg()) {
 	do {
 	    if (*arg != 0) {
@@ -144,7 +146,7 @@ setcmd(void)
 		}
 		else {
 		    int j;
-                    
+
                     if (b)
 			if (vp->v_tipe == VBOOL)
 			    vp->u->valu = no;
@@ -286,7 +288,7 @@ unmap(void)
 {
     int i;
     register char *arg;
-    
+
     if (arg=getarg()) {
 	if (strlen(arg) == 1) {
 	    undefine(lookup(*arg));
@@ -373,7 +375,7 @@ cutandpaste(void)
     char delim;
     register char *ip;
     register char *dp;
-    
+
     zerostack(&undo);
     ip = execstr;
     if (*ip != '&') {
@@ -519,7 +521,7 @@ backup(char *name)
     else
 	strcat(back, ".bkp");
 #endif
-    
+
     unlink(back);
     rename(name, back);
 } /* backup */
@@ -590,7 +592,7 @@ bool PROC
 writefile(void)
 {
     register char *name;
-    
+
     if ((name=getname()) == NULL)
 	name = filenm;
     if (*name) {
@@ -664,7 +666,7 @@ PROC
 readfile(void)
 {
     register char *name;
-    
+
     if (name=getarg())
 	inputf(name,NO);
     else
@@ -681,12 +683,12 @@ nextfile(bool prev)
 	myargc=0;
     char **myargv;
     bool newlist = NO;
-    
+
     if (prev == 0)
 	while (name=getarg())
 	    if (!expandargs(name, &myargc, &myargv))
 		return 0;
-    
+
     if (oktoedit(autowrite)) {
 	if (prev || (myargc == 1 && strcmp(myargv[0],"-") == 0)) {
 	    if (pc > 0) {
@@ -783,7 +785,7 @@ do_file(char *fname, exec_type *mode, bool *noquit)
 {
     char line[120];
     register FILE *fp;
-    
+
     if ((fp = fopen(fname,"r")) != NULL) {
 	indirect = YES;
 	while (fgets(line,120,fp) && indirect) {
@@ -885,7 +887,7 @@ exec(char *cmd, exec_type *mode, bool *noquit)
 {
     int  what;
     bool ok;
-    
+
     what = parse(cmd);
     ok = YES;
     if (diddled) {

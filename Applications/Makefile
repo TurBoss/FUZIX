@@ -1,11 +1,26 @@
 #
+# APPS = util cmd sh games cave cpm v7games games cursesgames \
+#       as09 ld09 netd MWC flashrom ue cpmfs plato \
+#       emulators cpnet dw assembler CC cpp ar
+
 APPS = util cmd sh games cave cpm v7games games cursesgames \
-       as09 ld09 netd MWC flashrom ue cpmfs plato \
-       emulators cpnet dw assembler CC cpp ar
+        as09 ld09 MWC flashrom ue cpmfs plato \
+        emulators dw assembler CC cpp ar ttytris \
+        ue14500-asm  levee
 
 .PHONY: $(APPS)
 
 all:	$(APPS)
+
+
+ue14500-asm:
+	+(cd ue1/ue14500-asm; $(MAKE) -f Makefile.$(USERCPU))
+
+ue14500-emu:
+	+(cd ue1/ue14500-emu; $(MAKE) -f Makefile.$(USERCPU))
+
+ttytris:
+	+(cd ttytris; $(MAKE) -f Makefile.$(USERCPU))
 
 util:
 	+(cd util; $(MAKE) -f Makefile.$(USERCPU))
@@ -37,8 +52,8 @@ ld09:
 as09:
 	+(cd as09; $(MAKE) -f Makefile.$(USERCPU))
 
-netd:
-	+(cd netd; $(MAKE) -f Makefile.$(USERCPU))
+# netd:
+#	+(cd netd; $(MAKE) -f Makefile.$(USERCPU))
 
 MWC:
 	+(cd MWC/cmd; $(MAKE) -f Makefile.$(USERCPU))

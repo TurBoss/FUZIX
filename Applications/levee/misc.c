@@ -226,7 +226,7 @@ beeper(void)
 
 
 PROC
-error()
+int error(void)
 {
     indirect = FALSE;
     macro = -1;
