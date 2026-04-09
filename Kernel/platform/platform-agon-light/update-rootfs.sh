@@ -284,8 +284,6 @@ ln cp ln
 ln reboot halt
 ln reboot shutdown
 
-bget ../../../Applications/cpnet/cpnet cpnet
-chmod 0755 cpnet
 
 bget ../../../Applications/levee/levee-ansi levee-ansi
 bget ../../../Applications/levee/levee-ansi levee-vt52
